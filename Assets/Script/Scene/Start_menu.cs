@@ -24,7 +24,10 @@ public class Start_menu : MonoBehaviour
     {
         SceneManager.LoadScene("Level_selection");
     }
-
+    public void BackButton()
+    {
+        SceneManager.LoadScene(1);
+    }
     private int ToContinueScene;
 
 

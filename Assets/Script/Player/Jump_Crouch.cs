@@ -7,7 +7,7 @@ public class Jump_Crouch : MonoBehaviour
     private Rigidbody2D rb;
     public Animator anim;
     public float jumpForce;
-    [SerializeField] BoxCollider2D collider2D;
+    BoxCollider2D collider2D;
     [SerializeField] LayerMask ground;
     private bool isJumping;
     [SerializeField] float jumpingPower;

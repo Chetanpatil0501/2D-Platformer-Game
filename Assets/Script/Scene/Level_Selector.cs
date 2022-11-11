@@ -2,14 +2,28 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class Level_Selector : MonoBehaviour
 {
-   public TextMeshProUGUI LevelText;
+    public Button[] lvlButtons;
+    public TextMeshProUGUI[] LevelText;
+   
 
-    public void Select_level()
+   
+    private void Update()
     {
-        SceneManager.LoadScene("Level_"+ LevelText.text);
+        int levelAt = PlayerPrefs.GetInt("levelAt", 3); //<-Level 1 scene at.
+
+        for (int i = 0; i < lvlButtons.Length; i++)
+        {
+            if (i + 3 > levelAt)
+            {
+                lvlButtons[i].interactable = false;
+                LevelText[i].enabled = false;
+            }
+
+        }
     }
 
 }
