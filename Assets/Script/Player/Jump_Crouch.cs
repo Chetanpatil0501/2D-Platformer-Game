@@ -46,7 +46,9 @@ public class Jump_Crouch : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumpBufferCounter = jumpBufferTime;
-          
+            Sound_Manager.instance.PlayerSound(Sound_Manager.PlayerSoundFX.PlayerJump);
+
+
         }
         else
         {
@@ -90,6 +92,7 @@ public class Jump_Crouch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("Jump 0");
+          
             state = movementState.jump;
         }
         else { state = movementState.Blend_tree; }

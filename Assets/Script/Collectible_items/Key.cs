@@ -17,6 +17,7 @@ public class Key : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Key"))
         {
+            Sound_Manager.instance.KeyCollectFX();
             Destroy(collision.gameObject);
             Keys++;
             KeyText.text = "Keys: " + Keys;

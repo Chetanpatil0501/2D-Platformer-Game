@@ -13,13 +13,17 @@ public class Level : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            SceneManager.LoadScene(Index);
-            if (Index > PlayerPrefs.GetInt("LevelAt"))
-            {
-                PlayerPrefs.SetInt("levelAt", Index);
-            }
+            Sound_Manager.instance.LevelCompleteFX();
+            Invoke("NextLevel", 2f);
+        }
        
+    }
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(Index);
+        if (Index > PlayerPrefs.GetInt("LevelAt"))
+        {
+            PlayerPrefs.SetInt("levelAt", Index);
         }
     }
 }

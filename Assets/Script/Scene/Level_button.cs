@@ -12,5 +12,6 @@ public class Level_button : MonoBehaviour
    public void LoadLevel()
     {
         SceneManager.LoadScene("Level_" + Button_num_text.text);
+        Sound_Manager.instance.ButtonClickFX();
     }
 }

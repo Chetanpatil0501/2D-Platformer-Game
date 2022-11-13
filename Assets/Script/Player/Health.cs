@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     private Animator anim;
     [SerializeField] GameObject Game_Over_screen;
     [SerializeField] GameObject UI;
-
+    bool isDead;
 
 
 
@@ -22,6 +22,14 @@ public class Health : MonoBehaviour
         anim = GetComponent<Animator>();
         Game_Over_screen.SetActive(false);
         UI.SetActive(true);
+        isDead = false;
+    }
+    private void Update()
+    {
+        if (isDead)
+        {
+            GetComponent<Player_Attack>().enabled = false;
+        }
     }
     public void TakeDamage(float _damage)
     {
@@ -32,6 +40,7 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             anim.SetTrigger("hurt");
+            Sound_Manager.instance.PlayerSound(Sound_Manager.PlayerSoundFX.PlayerHurt);
            
             //iframes
         }
@@ -44,19 +53,22 @@ public class Health : MonoBehaviour
             {
                 
                 anim.SetTrigger("die");
+             
                 UI.SetActive(false);
                 
-                Invoke("Game_over", 2f);
-              
-
-
+                Invoke("Game_over", 1f);
+                isDead = true;
+    
             }
         }
     }
-    void Game_over()
+   public void Game_over()
     {
         
        Game_Over_screen.SetActive(true);
+        Sound_Manager.instance.GameOverFX();
+
+
     }
     public void AddHealth(float _value)
     {

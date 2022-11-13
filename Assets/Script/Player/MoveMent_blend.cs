@@ -9,9 +9,6 @@ public class MoveMent_blend : MonoBehaviour
     //private fields :
     float horizontal_value;
     bool isRunning;
-    bool isJumping;
-    bool isJump_attack;
-    private Jump_Crouch jump_crouch;
     private bool IsCrouching;
     
  
@@ -37,6 +34,7 @@ public class MoveMent_blend : MonoBehaviour
         render = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         collider2D = GetComponent<BoxCollider2D>();
+        Sound_Manager.Initialize();
     }
 
     // Update is called once per frame
@@ -52,17 +50,32 @@ public class MoveMent_blend : MonoBehaviour
 
         horizontal_value = Input.GetAxisRaw("Horizontal");
 
+        if (Mathf.Abs(rb.velocity.x)>=2f && !isRunning )
+        {
+            Sound_Manager.instance.PlayerSound(Sound_Manager.PlayerSoundFX.PlayerWalk);
+        }
+        
+        else if (Mathf.Abs(rb.velocity.x) >= 6f && isRunning)
+        {
+            Sound_Manager.instance.PlayerSound(Sound_Manager.PlayerSoundFX.PlayerRun);
+        }
         //For sprint/Run........................................................................................................
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             isRunning = true;
+          
+
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isRunning = false;
+           
         }
 
+      
 
+       
+            
 
 
     }
@@ -82,10 +95,14 @@ public class MoveMent_blend : MonoBehaviour
             if (isRunning)
             {
                 Xval *= RunningSpeed;
-            }
+                
 
+            }
+           
             Vector2 Velocity = new Vector2(Xval, rb.velocity.y);
             rb.velocity = Velocity;
+
+            
 
             if (Xval > 0f)
             {
@@ -96,6 +113,7 @@ public class MoveMent_blend : MonoBehaviour
                 render.flipX = true;
             }
             anim.SetFloat("XVelocity", Mathf.Abs(rb.velocity.x));
+            Debug.Log(rb.velocity.x);
         }
 
     }

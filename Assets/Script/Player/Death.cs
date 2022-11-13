@@ -11,6 +11,7 @@ public class Death : MonoBehaviour
     [SerializeField] float mass;
     [SerializeField] GameObject Game_Over_screen;
     [SerializeField] GameObject UI;
+    bool isDead = false;
  
 
 
@@ -24,25 +25,38 @@ public class Death : MonoBehaviour
         UI.SetActive(true);
        
     }
-
+    private void Update()
+    {
+        if (isDead)
+        {
+            
+            GetComponent<Player_Attack>().enabled = false;
+        }
+    }
 
     private void FixedUpdate()
     {
         if (transform.position.y < -5f)
         {
-
+            isDead = true;
             rb.gravityScale = Gravity;
             rb.mass = mass;
             anim.Play("Falling_Death");
             UI.SetActive(false);
 
             Invoke("Game_over", 2f);
-           
+          
+        }
+        else
+        {
+            isDead = false;
         }
     }
 
     void Game_over()
     {
         Game_Over_screen.SetActive(true);
+        Sound_Manager.instance.GameOverFX();
+
     }
 }
