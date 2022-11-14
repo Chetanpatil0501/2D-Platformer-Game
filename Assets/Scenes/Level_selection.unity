@@ -524,14 +524,10 @@ MonoBehaviour:
   - {fileID: 10426869}
   - {fileID: 596377187}
   - {fileID: 1709749759}
-  - {fileID: 0}
-  - {fileID: 0}
   LevelText:
   - {fileID: 1857947440}
   - {fileID: 695485545}
   - {fileID: 759382290}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &188953345
 MonoBehaviour:
   m_ObjectHideFlags: 0
