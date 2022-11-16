@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause_menu : MonoBehaviour
 {
-
+    private int CurrentBuildIndex;
     [SerializeField] GameObject Pause_panel;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class Pause_menu : MonoBehaviour
         
     }
 
-    private int CurrentBuildIndex;
+  
     public void menu()
     {
         CurrentBuildIndex = SceneManager.GetActiveScene().buildIndex;

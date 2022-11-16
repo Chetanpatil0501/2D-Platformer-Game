@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Player_Attack : MonoBehaviour
 {
-    bool IsAttacking;
-    BoxCollider2D Coll;
     Animator anim;
     [SerializeField] GameObject AttackColl;
 
@@ -13,7 +10,6 @@ public class Player_Attack : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        Coll = GetComponent<BoxCollider2D>();
         AttackColl.SetActive(false);
     }
 
@@ -22,7 +18,7 @@ public class Player_Attack : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            IsAttacking = true;
+          
             anim.SetTrigger("Attack");
             AttackColl.SetActive(true);
             Sound_Manager.instance.PlayerSound(Sound_Manager.PlayerSoundFX.PlayerAttack);
@@ -30,7 +26,7 @@ public class Player_Attack : MonoBehaviour
         }
         else
         {
-            IsAttacking = false;
+          
             AttackColl.SetActive(false);
         }
     }

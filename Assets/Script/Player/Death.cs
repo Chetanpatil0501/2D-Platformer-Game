@@ -29,13 +29,13 @@ public class Death : MonoBehaviour
     {
         if (isDead)
         {
-            
             GetComponent<Player_Attack>().enabled = false;
         }
     }
 
     private void FixedUpdate()
     {
+        //Falling death : 
         if (transform.position.y < -5f)
         {
             isDead = true;

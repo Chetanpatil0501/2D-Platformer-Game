@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -99,9 +99,9 @@ public class Sound_Manager : MonoBehaviour
         {
             default:
                 return true;
-                
 
-            case PlayerSoundFX.PlayerRun:
+
+            case  PlayerSoundFX.PlayerRun:
                 if (SoundTimerDictionary.ContainsKey(sound))
                 {
                     float LastTimePlayed = SoundTimerDictionary[sound];
@@ -120,7 +120,7 @@ public class Sound_Manager : MonoBehaviour
                 {
                     return true;
                 }
-                break;
+              
 
 
             case PlayerSoundFX.PlayerWalk:
@@ -142,7 +142,7 @@ public class Sound_Manager : MonoBehaviour
                 {
                     return true;
                 }
-                break;
+             
          
              
            

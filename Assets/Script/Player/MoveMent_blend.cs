@@ -1,6 +1,4 @@
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveMent_blend : MonoBehaviour
@@ -82,7 +80,8 @@ public class MoveMent_blend : MonoBehaviour
 
     private void FixedUpdate()
     {  
-        move(horizontal_value);     
+        move(horizontal_value);
+        IsGrounded();
     }
 
 
@@ -113,7 +112,7 @@ public class MoveMent_blend : MonoBehaviour
                 render.flipX = true;
             }
             anim.SetFloat("XVelocity", Mathf.Abs(rb.velocity.x));
-            Debug.Log(rb.velocity.x);
+           
         }
 
     }

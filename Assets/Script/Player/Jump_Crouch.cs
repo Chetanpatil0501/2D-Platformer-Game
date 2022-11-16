@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump_Crouch : MonoBehaviour
@@ -32,7 +31,7 @@ public class Jump_Crouch : MonoBehaviour
     private void Update()
     {
 
-        //....................................................*JUMP*...........................................................
+    //JUMP : 
        
         if (IsGrounded())
         {
@@ -56,24 +55,9 @@ public class Jump_Crouch : MonoBehaviour
             
         }
 
-        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !isJumping)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            
+       
 
-            jumpBufferCounter = 0f;
-
-            StartCoroutine(JumpCooldown());
-        }
-
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            
-            coyoteTimeCounter = 0f;
-        }
-
-        //.............................................*CROUCH*..........................................................
+    //CROUCH :
 
         if (Input.GetKeyDown(KeyCode.C) && IsGrounded())
         {
@@ -86,7 +70,7 @@ public class Jump_Crouch : MonoBehaviour
 
         }
 
-        //..............................................*ANIMATOR*.......................................................
+    //ANIMATOR  :
         movementState state;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -118,7 +102,24 @@ public class Jump_Crouch : MonoBehaviour
 
     private void FixedUpdate()
     {
-      
+        // jump Velocity and ground check
+        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !isJumping)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+
+
+            jumpBufferCounter = 0f;
+
+            StartCoroutine(JumpCooldown());
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+
+            coyoteTimeCounter = 0f;
+        }
+        IsGrounded();
     }
 
   public bool IsCrouching()

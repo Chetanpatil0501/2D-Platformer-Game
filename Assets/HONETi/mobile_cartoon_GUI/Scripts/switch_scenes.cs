@@ -16,8 +16,5 @@ public class switch_scenes : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
 	
-	}
 }

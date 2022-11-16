@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Key : MonoBehaviour
+public class KeyCollecter : MonoBehaviour
 {
     private int Keys = 0;
     private int Score = 0;
@@ -11,7 +10,6 @@ public class Key : MonoBehaviour
     [SerializeField] private Text KeyText;
     [SerializeField] private Text ScoreText;
 
-    [SerializeField] private AudioSource collectionSoundEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
